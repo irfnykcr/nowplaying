@@ -7,7 +7,7 @@ import base64
 global redirect_uri
 global CLIENT_ID
 global CLIENT_SECRET
-with open('keys.json', 'r') as f:
+with open('config/keys.json', 'r') as f:
 	data = loads(f.read())
 	CLIENT_ID = data["CLIENT_ID"]
 	CLIENT_SECRET = data["CLIENT_SECRET"]
@@ -46,9 +46,37 @@ def getaccesstoken(user):
 		'Authorization': 'Basic ' + base64.b64encode(f'{CLIENT_ID}:{CLIENT_SECRET}'.encode('utf-8')).decode('utf-8')
 	}
 	r = requests.post(url, data=form, headers=headers)
+	rjson = r.json()
 	print("status:", r.status_code)
 	with open(fr'cache/{user}.json', 'w+') as f:
-		f.write(dumps(r.json(), indent=4))
-	return r.status_code, r.json()
+		f.write(dumps(rjson, indent=4))
+	return r.status_code, rjson
+def refreshtoken(user):
+	global CLIENT_ID
+	global CLIENT_SECRET
+	with open(fr'cache/{user}.json', 'r') as f:
+		data = loads(f.read())
+		refreshToken = data["refresh_token"]
+	form = {
+		"grant_type": "refresh_token",
+		"refresh_token": refreshToken
+	}
+	headers= {
+		'Content-Type': 'application/x-www-form-urlencoded',
+		'Authorization': 'Basic ' + base64.b64encode(f'{CLIENT_ID}:{CLIENT_SECRET}'.encode('utf-8')).decode('utf-8')
+	}
+	url = f"https://accounts.spotify.com/api/token"
+	r = requests.post(url, data=form, headers=headers)
+	rjson = r.json()
+	print("status:", r.status_code)
+	try:
+		rjson["refresh_token"]
+	except:
+		rjson["refresh_token"] = refreshToken
+	with open(fr'cache/{user}.json', 'w+') as f:
+		f.write(dumps(rjson, indent=4))
+	return r.status_code, rjson
+	
 # print(getauthurl())
-print(getaccesstoken('spotirfy'))
+# print(getaccesstoken('spotirfy'))
+print(refreshtoken('spotirfy'))
