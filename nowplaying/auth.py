@@ -21,12 +21,10 @@ def getauthurl():
 	global redirect_uri
 	global CLIENT_ID
 	response_type = 'code'
-	scope = 'user-read-private user-read-email'
+	scope = 'user-modify-playback-state user-read-currently-playing user-read-playback-state'
 	state = randomword(16)
 	url = f"https://accounts.spotify.com/authorize?client_id={CLIENT_ID}&response_type={response_type}&redirect_uri={redirect_uri}&scope={scope}&state={state}"
 	return url
-	# r = requests.get("https://accounts.spotify.com/authorize?client_id="+client_id+"&response_type="+response_type+"&redirect_uri="+redirect_uri+"&scope="+scope+"&state="+state)
-	# print(r.status_code,r.content)
 
 def getaccesstoken(user):
 	global redirect_uri
@@ -78,5 +76,5 @@ def refreshtoken(user):
 	return r.status_code, rjson
 	
 # print(getauthurl())
-# print(getaccesstoken('spotirfy'))
-print(refreshtoken('spotirfy'))
+print(getaccesstoken('spotirfy'))
+# print(refreshtoken('spotirfy'))
