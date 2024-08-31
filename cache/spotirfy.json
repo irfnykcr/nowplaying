@@ -1,7 +1,0 @@
-{
-    "access_token": "BQBhR6KSeHAIDYpv6cLIq-xXUxggSDvbpOnXXuqgEg8YNp6xmKoUTMrnozMJQORtvweyxxUCV9xU02y8zN46bVSThyPInBJYzOwBOTRAYlumdFkUUjnNGHEycY_sBge1frLXMMcp3ZwzN_PUnHIidwNSBAdsAaZ-fYi3UJUPLcLjbdhg_vI8y1FGWj4_EQT8eMEnnAn7zeTkBqub7F8aWGylasvMOg",
-    "token_type": "Bearer",
-    "expires_in": 3600,
-    "refresh_token": "AQDHeHyydtpMWaT1w4sETh8jvkC4Mf9uQv2teHZEArZjjebqA5_Yq58sCuzj0rlPx4XW_fySxZs1zj8UXADQ4NQ8f4sIN8MedmNQY5_5CkWAzmNy4lcGJXYmsxBu0j6BvOU",
-    "scope": "user-read-email user-read-private"
-}
