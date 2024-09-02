@@ -17,7 +17,7 @@ def get_current_playback_info(user):
 	except Exception as e:
 		return 500, f"spotify get error\n{e}"
 	rjson = r.json()
-	progress = int(r[1]["progress_ms"])/1000
+	progress = int(rjson["progress_ms"])/1000
 	item = rjson["item"]
 	name = item["name"]
 	duration = int(item["duration_ms"])/1000
