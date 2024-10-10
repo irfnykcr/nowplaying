@@ -1,3 +1,4 @@
 config/keys.json
 cache/
 flaskapp.py
+.venv/
