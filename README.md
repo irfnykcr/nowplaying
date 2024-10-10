@@ -2,6 +2,7 @@
 
 ## Overview
 Now Playing is a project that displays the currently playing song from your Spotify.
+This project is made mostly for testing and learning.
 
 ## Installation
 1. Clone the repository:
